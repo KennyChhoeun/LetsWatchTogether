@@ -1,5 +1,5 @@
 const express = require('express');
-var PORT = process.env.port || 5000;
+var PORT = process.env.PORT || 5000;
 const app = require('express')();
 const server = require('http').createServer(app);
 var bodyParser = require('body-parser');
@@ -36,6 +36,6 @@ io.on('connection', function (socket) {
 });
 
 server.listen(PORT, () => {
-    console.log('listening on localhost:5000');
+    console.log(`listening on localhost:${PORT}`);
 });
 
