@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+h1 {
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+body {
+    background-color: #424242 !important;
+}
+
+#player{
+    text-align: center;
+    margin-left: 10% !important;
+    margin-top: 1% !important;
+}
+
+.play{
+    color: white;
+}
+
+.pause{
+    margin-left: 9%;
+    color: white;
+}
+
+.play:hover{
+    color: red;
+}
+
+.pause:hover{
+    color: red;
+}
+
+.volDown{
+    color: white;
+}
+
+.volUp{
+    color: white;
+}
+
+.volDown:hover{
+    color: rgb(195, 188, 188);
+}
+
+.volUp:hover{
+    color: rgb(195, 188, 188);
+}
+.searchBar{
+    font-family: 'Lato', sans-serif;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    width: 600px;
+    height: 20px;
+    border-radius: 1px;
+    margin-bottom: 15px;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+
+.progressBar {
+    width: 720px;
+    height: 5px;
+    margin-top: 3% !important;
+    margin-left: 10% !important;
+    margin-bottom: 3% !important;
+    background-color: red;
+}
+
+#square {
+    position: relative;
+    bottom: 7px;
+}
+
+.mr-sm-2 {
+    width: 500px !important;
+}
+
+.hint {
+    margin-left: 10%;
+    color: rgb(175, 173, 173) !important;
+}
+
+.hint:hover {
+    color: rgb(255, 255, 255) !important;
+}
