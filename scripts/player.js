@@ -1,14 +1,7 @@
 const socket = io();
+//var playButton = $('.play');
+//var pauseButton = $('.pause');
 
-var promptAlert = prompt("Please enter Room ID to join", "123");
-var roomid;
-if (promptAlert == null || promptAlert == "") {
-    alert("no room id try again");
-} else {
-    roomid = promptAlert;
-    alert(roomid);
-    socket.emit('joinRoom', roomid);
-}
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 var searchurl = document.getElementById('search');
@@ -24,10 +17,10 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '480',
         width: '720',
-        videoId: 'gSc0o6xVnmY',
+        videoId: 'fWXDKCN5Jl0',
         playerVars: {
-            'autoplay': 1,
-            'controls': 1,
+            'autoplay': 0,
+            'controls': 0,
             'disablekb': 1,
             'modestbranding': 1,
         },
@@ -45,7 +38,7 @@ function progressBarLoop() {
         var divOffset = $(this).offset()
         var seekTo = (event.pageX - divOffset.left) / 720 * player.getDuration();
         console.log(seekTo);
-        var mydata = { roomID: roomid, state: 'play', time: seekTo };
+        var mydata = { state: 'play', time: seekTo };
         socket.emit('playerEvent', mydata);
         console.log(divOffset);
     });
@@ -115,11 +108,6 @@ function nextVid() {
     let vidData = { videoID: videoID };
     socket.emit('newVideo', vidData);
 };
-
-function setRoom() {
-    let room_id= document.getElementById('roomid').value;
-    socket.emit('joinRoom', room_id);
-}
 
 function lowerVolume() {
     player.setVolume(player.getVolume() - 20);

@@ -31,9 +31,6 @@
         <input id="search" class="form-control mr-sm-2" type="search" placeholder="YouTube Video URL"
             aria-label="Search">
         <button onclick="nextVid()" class="btn btn-outline-success my-2 my-sm-0">GO</button>
-        <input id="roomid" class="form-control mr-sm-2" type="search" placeholder="Room ID"
-            aria-label="Search">
-        <button onclick="setRoom()" class="btn btn-outline-success my-2 my-sm-0">Set Room</button>
     </nav>
     <br></br>
     
@@ -79,6 +76,14 @@
     <br></br>
     <a class="hint">Hint: Double Click Video To Go FullScreen</a>
     <script src="scripts/playerControls.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.15.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 </body>
 
 </html>
