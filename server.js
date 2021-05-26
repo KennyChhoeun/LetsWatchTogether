@@ -24,16 +24,25 @@ app.get('/', (req, res) => {
 app.use(express.static(__dirname));
 
 io.on('connection', function (socket) {
-    console.log('a user connected');
     socket.on('playerEvent', function (msg) {
         console.log(msg);
-        io.sockets.emit('event', msg);
+        //io.sockets.emit('event', msg);
+        io.to(msg.roomID).emit('event', msg);
+
     });
     socket.on('newVideo', function(msg) {
         console.log(msg);
         io.sockets.emit('newVideo', msg);
     });
+    socket.on('joinRoom', function(msg) {
+        console.log(msg);
+        socket.join(msg);
+    })
+    socket.on('disconnect', () => {
+        console.log('user left');
+      });
 });
+
 
 server.listen(PORT, () => {
     console.log(`listening on localhost:${PORT}`);
