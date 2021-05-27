@@ -6,48 +6,22 @@ h1 {
     color: white;
 }
 
+h4 {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
 body {
     background-color: #424242 !important;
 }
 
 #player{
     text-align: center;
-    margin-left: 10% !important;
+    margin-left: 20% !important;
     margin-top: 1% !important;
 }
 
-.play{
-    color: white;
-}
-
-.pause{
-    margin-left: 9%;
-    color: white;
-}
-
-.play:hover{
-    color: red;
-}
-
-.pause:hover{
-    color: red;
-}
-
-.volDown{
-    color: white;
-}
-
-.volUp{
-    color: white;
-}
-
-.volDown:hover{
-    color: rgb(195, 188, 188);
-}
-
-.volUp:hover{
-    color: rgb(195, 188, 188);
-}
 .searchBar{
     font-family: 'Lato', sans-serif;
     color: black;
@@ -61,15 +35,7 @@ body {
 
 .navbar-brand{
     color: white !important;
-}
-
-.progressBar {
-    width: 720px;
-    height: 5px;
-    margin-top: 3% !important;
-    margin-left: 10% !important;
-    margin-bottom: 3% !important;
-    background-color: red;
+    margin-right: 5px !important;
 }
 
 #square {
@@ -88,4 +54,17 @@ body {
 
 .hint:hover {
     color: rgb(255, 255, 255) !important;
+}
+
+a {
+    font-size: 15px;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    font-size: 16px;
+    color:#4921d8 !important; 
+    text-decoration:none !important; 
+    cursor:pointer;  
 }

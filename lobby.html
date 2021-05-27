@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Lobby</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="./styles/lobby.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Let's Watch Together!</h1>
+        <button id='createroom' onclick="createRoom()">Create Room</button>
+        <br>
+        <br>
+        <button id='joinroom' onclick="joinRoom()">Join a Room</button>
+        <br><input id='roomidinput' placeholder="RoomID">
+        <p>Watch video in sync with friends on YouTube</p>
+        <img src="https://variety.com/wp-content/uploads/2020/06/youtube-logo.png?w=681&h=383&crop=1">
+    </div>
+    <script src="scripts/lobby.js"></script>
+</body>

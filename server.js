@@ -18,29 +18,27 @@ const io = require("socket.io")(server, {
 // Start backend
 
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-  });
+    res.sendFile(__dirname + '/lobby.html');
+});
 
 app.use(express.static(__dirname));
 
 io.on('connection', function (socket) {
     socket.on('playerEvent', function (msg) {
         console.log(msg);
-        //io.sockets.emit('event', msg);
         io.to(msg.roomID).emit('event', msg);
-
     });
-    socket.on('newVideo', function(msg) {
+    socket.on('newVideo', function (msg) {
         console.log(msg);
-        io.sockets.emit('newVideo', msg);
+        io.to(msg.roomID).emit('newVideo', msg);
     });
-    socket.on('joinRoom', function(msg) {
+    socket.on('joinRoom', function (msg) {
         console.log(msg);
         socket.join(msg);
     })
     socket.on('disconnect', () => {
         console.log('user left');
-      });
+    });
 });
 
 
