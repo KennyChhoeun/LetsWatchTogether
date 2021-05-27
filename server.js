@@ -39,6 +39,11 @@ io.on('connection', function (socket) {
     socket.on('disconnect', () => {
         console.log('user left');
     });
+    socket.on('new message', (data) => {
+        console.log(data);
+        let message = data.username + ": " + data.message;
+        io.to(data.roomID).emit('message', (message));
+    });
 });
 
 

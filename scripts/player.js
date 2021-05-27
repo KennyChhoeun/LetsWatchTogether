@@ -1,7 +1,7 @@
 const socket = io();
 
 var roomid = localStorage.getItem('id');
-socket.emit('joinRoom',roomid);
+socket.emit('joinRoom', roomid);
 document.getElementById("room display").innerHTML = "Room #" + roomid;
 
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -48,7 +48,7 @@ function onPlayerStateChange(event) {
         socket.emit('playerEvent', mydata);
     }
     if (event.data == YT.PlayerState.PAUSED) {
-        var mydata = { roomID: roomid, state: 'pause'}
+        var mydata = { roomID: roomid, state: 'pause' }
         socket.emit('playerEvent', mydata);
     }
 }
@@ -81,7 +81,7 @@ socket.on('event', function (msg) {
     }
 });
 
-socket.on('newVideo', function(msg) {
+socket.on('newVideo', function (msg) {
     player.loadVideoById({
         videoId: msg.videoID,
     });
@@ -93,7 +93,6 @@ function nextVid() {
     let videoID = searchurl.value.substr(32);
     let vidData = { roomID: roomid, videoID: videoID };
     socket.emit('newVideo', vidData);
-    playVideo();
 };
 
 function setRoom() {
@@ -111,4 +110,18 @@ function increaseVolume() {
 
 function seekTo(seconds) {
     player.seekTo(seconds);
+}
+
+// chat
+socket.on("connect", () => {
+    console.log(socket.id); // "G5p5..."
+});
+function sendChat() {
+    let message = document.getElementById('inputchat').value;
+    if (message == '') {
+        //do nothing 
+    } else {
+        let data = { username: socket.id, roomID: roomid, message: message }
+        socket.emit('new message', data);
+    }
 }
