@@ -37,11 +37,13 @@ io.on('connection', function (socket) {
         socket.join(msg);
     })
     socket.on('disconnect', () => {
-        console.log('user left');
+        console.log('A user has left a room');
     });
     socket.on('new message', (data) => {
         console.log(data);
-        let message = data.username + ": " + data.message;
+        let currentDate = new Date();
+        let time = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+        let message = time + " " + data.username + ": " + data.message;
         io.to(data.roomID).emit('message', (message));
     });
 });

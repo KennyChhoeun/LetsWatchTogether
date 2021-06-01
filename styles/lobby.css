@@ -1,49 +1,26 @@
 #container {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-
-button {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: #1d8ad3; /* Green */
-    border: none;
     color: white;
-    padding: 15px 32px;
+}
+
+#roomidinput {
+    width: 5px;
+}
+
+h1 {
+    color: black !important;
+}
+
+p {
+    color: black !important;
+}
+#footer {
+    cursor: pointer;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 21px;
-}
-
-button:hover {
-    background-color: #0d5280; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 23px;
-}
-
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid rgb(63, 71, 179);
-    border-radius: 4px;
-}
-
-input:focus {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border: 2px solid rgb(45, 173, 73);
-    border-radius: 4px;
-}
+    font-family: inherit;
+    font-weight: 500;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+ }

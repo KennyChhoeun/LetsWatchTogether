@@ -2,52 +2,96 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/technology-26/96/monitor_computer_desktop-128.png"
         type="image/gif" sizes="16x16">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/index.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <title>Lets Watch</title>
+    <title>Lets Watch Together</title>
 </head>
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <nav class="navbar sticky-top navbar-dark bg-dark">
-        <a class="navbar-brand">Let's Watch Together</a>
-        <input id="search" class="form-control mr-sm-2" type="search" placeholder="YouTube Video URL"
-            aria-label="Search">
-        <button onclick="nextVid()" class="btn btn-outline-success my-2 my-sm-0">Play Video</button>
-    </nav>
-    <br></br>
-    <svg xmlns="http://www.w3.org/2000/svg" id='arrow' width="16" height="16" fill="currentColor"
-        class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
-        <path fill-rule="evenodd"
-            d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z" />
-    </svg>
-    <a href="/lobby.html">Back to Room Selection</a>
-    <h4 id="room display"></h4>
-    <div id='player'>
-        <script src="scripts/player.js"></script>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" id='room display' href="#"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./lobby.html">Lobby</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">About</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id='search' type="search" placeholder="YouTube Video URL" aria-label="Search">
+                <button onclick="nextVid()" class="btn btn-outline-success my-2 my-sm-0" type='button'>Play
+                    Video</button>
+            </form>
+        </div>
+    </nav>
+    <div class="alert alert-primary" role="alert">
+        Use the navigation bar above to input a YouTube url
+        such as <a class="alert-link">https://www.youtube.com/watch?v=uFZb_A6_zBk</a> and click <a class="alert-link">play video
+        </a><br>When a new user joins click <a class="alert-link">Play Video</a> again to resync
+    </div>
+    <div class="embed-responsive embed-responsive-16by9">
+        <div id='player'>
+            <script src="scripts/player.js"></script>
+        </div>
+    </div>
+    <h4 id='chat-header'></h4>
+    <script>
+        var roomid = localStorage.getItem('id');
+        document.getElementById("chat-header").innerHTML = "Room: " + roomid;
+    </script>
+    <h4>Chat</h4>
+    <div class="input-group mb-3">
+        <input id='inputchat' type="text" class="form-control" placeholder="Send a message to room">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" onclick="sendChat()" type="button"
+                id="button-addon2">Send</button>
+        </div>
+        <script>
+            // Allowing 'enter' on keyboard to trigger button click
+            var input = document.getElementById("inputchat");
+
+            // Execute a function when the user releases a key on the keyboard
+            input.addEventListener("keyup", function (event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("button-addon2").click();
+                }
+            });
+        </script>
+    </div>
     <div id='chat'>
-        <h2>Chat</h2>
-        <input id="inputchat" placeholder="Chat">
-        <button onclick="sendChat()">Send</button>
-        <script>socket.on('message', function (data) {
+        <script>
+            socket.on('message', function (data) {
                 console.log(data);
                 let chatMsg = document.createElement('p');
                 let bodyElement = document.querySelector('body');
